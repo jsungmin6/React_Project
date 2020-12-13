@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff59d;
+  padding: 14px 14px;
+}
+
+.logo {
+  font-size: 25px;
+}
+
+.logo i {
+  color: #96937c;
+}
+
+.menus {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.menus li {
+  padding: 8px 14px;
+}
+.menus li:hover {
+  background-color: #cbc26d;
+  border-radius: 4px;
+}
+
+.icons {
+  list-style: none;
+  display: flex;
+  font-size: 25px;
+}
+
+.icons li {
+  padding: 8px 14px;
+}
