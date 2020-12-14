@@ -46,3 +46,39 @@ a {
 .icons li {
   padding: 8px 14px;
 }
+
+.toogle {
+  display: none;
+  position: absolute;
+  right: 30px;
+  font-size: 25px;
+  color: #96937c;
+}
+
+@media screen and (max-width: 768px) {
+  .nav_bar {
+    flex-direction: column;
+    align-items: start;
+  }
+  .menus {
+    display: none;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  .icons {
+    display: none;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .toogle {
+    display: block;
+  }
+}
+
+.menus.active,
+.icons.active {
+  display: flex;
+}
