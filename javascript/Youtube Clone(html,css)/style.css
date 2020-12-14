@@ -1,0 +1,87 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header_logo {
+  background-color: black;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 7px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+li {
+  list-style: none;
+}
+
+.logo {
+  color: white;
+}
+
+.logo i {
+  color: red;
+  font-size: 25px;
+}
+
+.logo a {
+  color: white;
+  font-size: 20px;
+}
+
+.icons i {
+  color: white;
+  padding: 3px 7px;
+}
+
+.video {
+  width: 100%;
+}
+
+#gona {
+  width: 100%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  padding: 7px;
+}
+
+.info.metadata {
+  display: flex;
+  flex-direction: column;
+}
+
+.hashTags {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+}
+
+.hashTags li a {
+  padding-right: 8px;
+  color: blue;
+}
+
+.title {
+  margin-bottom: 1%;
+}
+
+.create {
+  font-size: 3px;
+  margin-top: 0%;
+  padding: 0%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.
