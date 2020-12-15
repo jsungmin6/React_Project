@@ -1,2 +1,6 @@
 *.mp4
 *.png
+*.jpg
+images
+video
+node_modules
