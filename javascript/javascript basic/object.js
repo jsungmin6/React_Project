@@ -15,8 +15,8 @@ function print(person) {
 const ellie = { name: 'ellie', age: 4 };
 print(ellie);
 
-// with JavaScript magic (dynamically typed language)
-// can add properties later
+// with JavaScript magic (dynamically typed language) 동적으로 타입이 런타임때 결정
+// can add properties later // 뒤늦게 정보를 추가하는 놀라운 기능이 가능
 ellie.hasJob = true;
 console.log(ellie.hasJob);
 

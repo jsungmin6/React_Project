@@ -12,13 +12,14 @@ name = "hello";
 console.log(name);
 
 //var (don`t ever use this!)
-//var hoisting(move declaration from bottom to top)
+//var hoisting(move declaration from bottom to top) : 어디에 선언했느냐에 상관없이 항상 선언을 제일 위로 끌어올려주는 것을 말한다.
 //has no block scope
 {
   age = 4;
   var age;
 }
 console.log(age); // 정상 출력, 이런유연성을 이용해 프로그램을 만들었지만 규모있는 프로젝트에선 선언하지도 않은 변수가 할당되는 문제 발생
+
 
 //3. contant, r(read only) 읽기만 가능. 다른값으로 쓰는것은 불가능
 //use const whenever possible.
@@ -56,7 +57,7 @@ console.log(negativeInfinity);
 console.log(nAn);
 
 //bigInt(fairly new, don`t use it yet)
-const bigInt = 1234214253544546536454522n; //over (-2*53 ~ 2*53)
+const bigInt = 1234214253544546536454522n; //over (-2*53 ~ 2*53), n을 붙여야 인식
 //최근에 추가 다른 브라우저에선 지원이 안됨
 
 //string

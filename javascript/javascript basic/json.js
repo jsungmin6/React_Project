@@ -21,6 +21,7 @@ const rabbit = {
   },
 };
 
+//심볼과 함수는 포함되지 않는다.
 json = JSON.stringify(rabbit);
 console.log(json);
 
