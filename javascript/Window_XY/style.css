@@ -1,0 +1,46 @@
+body {
+    background-color: black;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    display: inline;
+    height: 100px;
+    background-color: bisque;
+    margin-top: 1px;
+}
+
+#target {
+    background-color: brown;
+}
+
+button {
+    background-color: antiquewhite;
+    font-size: 3px;
+}
+
+.to100 {
+    position: fixed;
+    top: 20px;
+    right: 210px;
+}
+
+.toTarget {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+}
+
+.down {
+    position: fixed;
+    top: 20px;
+    right: 110px;
+}

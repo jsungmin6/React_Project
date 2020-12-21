@@ -1,17 +1,19 @@
 body {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 li {
-  list-style-type: none;
+    list-style-type: none;
+    padding-left: 0;
 }
 
 ul {
-  background-color: red;
+    padding-left: 0;
+    background-color: rgb(205, 228, 228);
 }
 
 div {
-  display: inline-block;
+    display: inline-block;
 }
