@@ -1,0 +1,30 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.screen-log {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.target {
+    position: absolute;
+}
+
+.horizontal {
+    width: 100%;
+    position: absolute;
+    background-color: white;
+    height: 1px;
+}
+
+.vertical {
+    position: absolute;
+    height: 100%;
+    background-color: white;
+    width: 1px;
+}
