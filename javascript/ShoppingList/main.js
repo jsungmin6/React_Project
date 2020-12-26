@@ -1,7 +1,19 @@
 const body = document.querySelector(".body");
 const input = document.querySelector(".input");
 const plus = document.querySelector(".plus");
-plus.addEventListener("click", create);
+
+plus.addEventListener("click", (e) => {
+    create();
+});
+
+body.addEventListener("click", (e) => {
+    if (e.target.classList.value == "fas fa-trash-alt") {
+        body.removeChild(e.target.parentElement.parentElement);
+    } else {
+        return;
+    }
+});
+
 input.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         create();
@@ -25,8 +37,4 @@ function create() {
     list.scrollIntoView({ block: "center" });
     input.value = "";
     input.focus();
-
-    trash.addEventListener("click", (e) => {
-        body.removeChild(list);
-    });
 }
