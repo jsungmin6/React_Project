@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.map {
+  background-image: url(img/background.png);
+  background-size: 700px 500px;
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  height: 500px;
+  margin: 100px;
+  border-radius: 30px;
+  align-items: center;
+}
+
+.map .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50%;
+  width: 100%;
+}
+
+.map .top .start {
+  font-size: 30px;
+  width: 80px;
+  margin-top: 10px;
+  padding: 10px;
+  outline: none;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 10px;
+  background-color: rgb(212, 219, 144);
+}
+
+.map .top .start:hover {
+  transform: scale(1.1);
+}
+
+.map .top .time {
+  font-size: 30px;
+  width: 200px;
+  margin-top: 10px;
+  text-align: center;
+  outline: none;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.map .top .count {
+  font-size: 30px;
+  width: 50px;
+  height: 50px;
+  margin-top: 10px;
+  text-align: center;
+  outline: none;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+  border-radius: 50px;
+  background-color: pink;
+}
+
+.map .field {
+  height: 50%;
+  width: 100%;
+}
+
+.map .field .alarm {
+}
