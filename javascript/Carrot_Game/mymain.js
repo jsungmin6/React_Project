@@ -1,9 +1,33 @@
 'use strict'
 
-//init()을 호출하면 오당근과 벌레 5개를 랜덤한 위치에 생성하기
 const CARROT_SIZE = 80;
 const field = document.querySelector(".game_field");
+const gameButton = document.querySelector(".game_button");
+const gameTimer = document.querySelector(".game_timer");
+const gameScore = document.querySelector(".game_score");
 const fieldRect = field.getBoundingClientRect();
+const popUp = document.querySelector("pop-up pop-up--hide");
+
+
+gameButton.addEventListener("click", (e) => {
+    initGame()
+    timeDown()
+});
+
+
+function timeDown() {
+    let time = 5
+    const x = setInterval(() => {
+        gameTimer.innerHTML = `0:${time}`
+        time -= 1
+
+        if (time < 0) {
+            clearInterval(x);
+            gameButton.style.display = "none";
+            //팝업 띄우기
+        }
+    }, 1000);
+}
 
 function initGame() {
     //벌레와 당근을 생성한뒤 field에 추가해줌
