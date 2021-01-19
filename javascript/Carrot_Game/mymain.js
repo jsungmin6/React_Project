@@ -1,38 +1,84 @@
 'use strict'
 
 const CARROT_SIZE = 80;
+const CARROT_COUNT = 5;
+const BUG_COUNT = 5;
+const GAME_DURATION_SEC = 5
 const field = document.querySelector(".game_field");
-const gameButton = document.querySelector(".game_button");
+const gameBtn = document.querySelector(".game_button");
 const gameTimer = document.querySelector(".game_timer");
 const gameScore = document.querySelector(".game_score");
 const fieldRect = field.getBoundingClientRect();
-const popUp = document.querySelector("pop-up pop-up--hide");
+const popUp = document.querySelector(".pop-up--hide");
 
+let started = false;
+let score = 0;
+let timer = undefined;
 
-gameButton.addEventListener("click", (e) => {
-    initGame()
-    timeDown()
+gameBtn.addEventListener("click", (e) => {
+    if (started) {
+        console.log('stopGame')
+        stopGame();
+    } else {
+        startGame();
+    }
+    started = !started;
 });
 
+function stopGame() {
+    stopTimer()
+    showPopup()
+}
 
-function timeDown() {
-    let time = 5
-    const x = setInterval(() => {
-        gameTimer.innerHTML = `0:${time}`
-        time -= 1
+function stopTimer() {
+    clearInterval(timer)
+}
+function showPopup() {
+    popUp.classList.remove('pop-up--hide')
+}
 
-        if (time < 0) {
-            clearInterval(x);
-            gameButton.style.display = "none";
-            //팝업 띄우기
+function startGame() {
+    initGame();
+    showStopButton();
+    showTimerAndScore();
+    startGameTimer();
+}
+
+function startGameTimer() {
+    let remainingTimeSec = GAME_DURATION_SEC;
+    updateTimerText(remainingTimeSec)
+    timer = setInterval(() => {
+        if (remainingTimeSec <= 0) {
+            clearInterval(timer);
+            return
         }
+        updateTimerText(--remainingTimeSec);
     }, 1000);
+}
+function updateTimerText(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    gameTimer.innerText = `${minutes}:${seconds}`;
+}
+
+
+function showTimerAndScore() {
+    gameTimer.style.visibility = 'visible';
+    gameScore.style.visibility = 'visible';
+}
+
+function showStopButton() {
+    const icon = gameBtn.querySelector('.fa-play')
+    icon.classList.add('fa-stop');
+    icon.classList.remove('fa-play');
 }
 
 function initGame() {
+    field.innerHTML = '';
+    gameScore.innerText = CARROT_COUNT;
     //벌레와 당근을 생성한뒤 field에 추가해줌
-    addItem('carrot', 5, 'img/carrot.png');
-    addItem('bug', 5, 'img/bug.png');
+    addItem('carrot', CARROT_COUNT, 'img/carrot.png');
+    addItem('bug', BUG_COUNT, 'img/bug.png');
 }
 
 function addItem(className, count, imgPath) {

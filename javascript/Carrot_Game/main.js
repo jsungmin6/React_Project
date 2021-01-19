@@ -3,7 +3,7 @@
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
-
+const GAME_DURATION_SEC = 5
 const field = document.querySelector(".game_field");
 const gameBtn = document.querySelector(".game_button");
 const gameTimer = document.querySelector(".game_timer");
@@ -36,18 +36,22 @@ function startGame() {
 }
 
 function startGameTimer() {
-    let GAEM_TIME = 5;
-    const x = setInterval(() => {
-        gameTimer.innerHTML = `0:${GAEM_TIME}`
-        GAEM_TIME -= 1
-
-        if (GAEM_TIME < 0) {
-            clearInterval(x);
-            gameButton.style.visibility = 'hidden';
-            //팝업 띄우기
+    let remainingTimeSec = GAME_DURATION_SEC;
+    updateTimerText(remainingTimeSec)
+    timer = setInterval(() => {
+        if (remainingTimeSec <= 0) {
+            clearInterval(timer);
+            return
         }
+        updateTimerText(--remainingTimeSec);
     }, 1000);
 }
+function updateTimerText(time) {
+    const minutes = Math.floor(time / 60);
+    const seconds = time % 60;
+    gameTimer.innerText = `${minutes}:${seconds}`;
+}
+
 
 function showTimerAndScore() {
     gameTimer.style.visibility = 'visible';
