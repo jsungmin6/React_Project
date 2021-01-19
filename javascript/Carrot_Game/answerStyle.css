@@ -20,6 +20,7 @@ button {
 
 body {
   text-align: center;
+  background-color: black;
 }
 
 .game_header {
@@ -51,6 +52,8 @@ body {
   font-size: 32px;
   margin-top: 8px;
   visibility: hidden;
+  user-select: none;
+  cursor: auto;
 }
 
 .game_score {
@@ -101,4 +104,14 @@ body {
 
 .pop-up--hide {
   display: none;
+}
+
+.carrot,
+.bug {
+  transition: trasform 100ms ease-in;
+}
+
+.carrot:hover,
+.bug:hover {
+  transform: scale(1.1);
 }

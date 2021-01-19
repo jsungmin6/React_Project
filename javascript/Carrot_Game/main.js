@@ -22,27 +22,101 @@ let started = false;
 let score = 0;
 let timer = undefined;
 
+const carrotSound = new Audio('./sound/carrot_pull.mp3');
+const bgSound = new Audio('./sound/bg.mp3');
+const bugSound = new Audio('./sound/bug_pull.mp3');
+const winSound = new Audio('./sound/game_win.mp3');
+const alertSound = new Audio('./sound/alert.wav');
 
 field.addEventListener('click', onFieldClick)
 
+function onFieldClick(event) {
+    if (!started) {
+        return;
+    }
+    const target = event.target;
+    if (target.matches('.carrot')) {
+        target.remove();
+        score++;
+        playSound(carrotSound);
+        updateScoreBoard();
+        if (score == CARROT_COUNT) {
+            finishGame(true);
+        }
+    } else if (target.matches('.bug')) {
+
+        finishGame(false);
+
+    }
+}
+
+function playSound(sound) {
+    sound.currentTime = 0;
+    sound.play();
+}
+
+function stopSound(sound) {
+    sound.pause();
+}
+
+
+function updateScoreBoard() {
+    gameScore.innerText = CARROT_COUNT - score;
+}
 gameBtn.addEventListener("click", (e) => {
     if (started) {
         stopGame();
     } else {
         startGame();
     }
-    started = !started;
+
 });
 
+popUpRefresh.addEventListener('click', () => {
+    startGame();
+    hidePopUp();
+})
+
+function startGame() {
+    started = true;
+
+    initGame();
+    showStopButton();
+    showTimerAndScore();
+    startGameTimer();
+    playSound(bgSound);
+}
+
 function stopGame() {
+    started = false;
     stopGameTimer();
     hideGameButton();
     showPopUpWithText('REPLAY?');
+    playSound(alertSound);
+    stopSound(bgSound);
+}
+
+
+function finishGame(win) {
+    started = false;
+    hideGameButton();
+    if (win) {
+        playSound(winSound);
+    } else {
+        playSound(bugSound);
+    }
+    stopGameTimer();
+    stopSound(bgSound);
+    showPopUpWithText(win ? 'YOU WON💋' : 'YOU LOST 💣');
 }
 
 function showPopUpWithText(text) {
     popUpText.innerText = text
     popUp.classList.remove('pop-up--hide')
+}
+
+function hidePopUp() {
+    popUp.classList.add('pop-up--hide')
 }
 
 function stopGameTimer() {
@@ -53,19 +127,15 @@ function hideGameButton() {
     gameBtn.style.visibility = 'hidden';
 }
 
-function startGame() {
-    initGame();
-    showStopButton();
-    showTimerAndScore();
-    startGameTimer();
-}
+
 
 function startGameTimer() {
     let remainingTimeSec = GAME_DURATION_SEC;
     updateTimerText(remainingTimeSec)
     timer = setInterval(() => {
-        if (remainingTimeSec <= 0) {
+        if (remainingTimeSec < 0) {
             clearInterval(timer);
+            finishGame(CARROT_COUNT == score)
             return
         }
         updateTimerText(--remainingTimeSec);
@@ -84,12 +154,14 @@ function showTimerAndScore() {
 }
 
 function showStopButton() {
-    const icon = gameBtn.querySelector('.fa-play')
+    const icon = gameBtn.querySelector('.fas')
     icon.classList.add('fa-stop');
     icon.classList.remove('fa-play');
+    gameBtn.style.visibility = 'visible';
 }
 
 function initGame() {
+    score = 0;
     field.innerHTML = '';
     gameScore.innerText = CARROT_COUNT;
     //벌레와 당근을 생성한뒤 field에 추가해줌

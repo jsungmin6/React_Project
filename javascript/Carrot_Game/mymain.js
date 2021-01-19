@@ -22,6 +22,8 @@ let started = false;
 let score = 0;
 let timer = undefined;
 
+field.addEventListener('click', onFieldClick)
+
 gameBtn.addEventListener("click", (e) => {
     if (started) {
         stopGame();
