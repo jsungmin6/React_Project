@@ -1,5 +1,10 @@
 'use strict'
 
+//리버튼 눌렀을 때
+//당근 눌렀을 때
+//벌레 눌렀을 때
+//
+
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
@@ -9,11 +14,16 @@ const gameBtn = document.querySelector(".game_button");
 const gameTimer = document.querySelector(".game_timer");
 const gameScore = document.querySelector(".game_score");
 const fieldRect = field.getBoundingClientRect();
-const popUp = document.querySelector("pop-up pop-up--hide");
+const popUp = document.querySelector(".pop-up");
+const popUpText = document.querySelector(".pop_up__message");
+const popUpRefresh = document.querySelector(".pop_up__refresh");
 
 let started = false;
 let score = 0;
 let timer = undefined;
+
+
+field.addEventListener('click', onFieldClick)
 
 gameBtn.addEventListener("click", (e) => {
     if (started) {
@@ -25,7 +35,22 @@ gameBtn.addEventListener("click", (e) => {
 });
 
 function stopGame() {
+    stopGameTimer();
+    hideGameButton();
+    showPopUpWithText('REPLAY?');
+}
 
+function showPopUpWithText(text) {
+    popUpText.innerText = text
+    popUp.classList.remove('pop-up--hide')
+}
+
+function stopGameTimer() {
+    clearInterval(timer)
+}
+
+function hideGameButton() {
+    gameBtn.style.visibility = 'hidden';
 }
 
 function startGame() {
